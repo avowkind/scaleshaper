@@ -3,6 +3,8 @@
 A local, data-driven web app for understanding and practising piano scales.
 See [DESIGN.md](DESIGN.md) for the full design and rationale.
 
+**Live:** https://avowkind.github.io/myscales/ — auto-deployed from `main` via GitHub Actions.
+
 ## Run
 
 ```bash
