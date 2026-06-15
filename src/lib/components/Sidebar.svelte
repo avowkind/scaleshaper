@@ -1,7 +1,14 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { base } from '$app/paths';
-	import { namedByFamily, routeOf, search, signatureLabel, type ScaleRecord } from '$lib/catalog';
+	import {
+		namedByFamily,
+		routeOf,
+		search,
+		signatureLabel,
+		FAMILY_COLOR,
+		type ScaleRecord
+	} from '$lib/catalog';
 
 	let query = $state('');
 	let groups = namedByFamily();
@@ -30,7 +37,9 @@
 	{:else}
 		{#each groups as g}
 			<div class="group">
-				<div class="group-label">{g.label}</div>
+				<div class="group-label">
+					<span class="fam-dot" style="background:{FAMILY_COLOR[g.family].accent}"></span>{g.label}
+				</div>
 				{#each g.scales as s}
 					<a class="item" class:active={active(s)} href="{base}/scale/{routeOf(s)}">
 						{s.name}<span class="sig">{signatureLabel(s)}</span>
@@ -78,12 +87,22 @@
 		margin-bottom: 0.85rem;
 	}
 	.group-label {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
 		text-transform: uppercase;
 		font-size: 0.68rem;
 		letter-spacing: 0.06em;
 		color: var(--ink-soft);
 		margin-bottom: 0.25rem;
 		font-weight: 700;
+	}
+	.fam-dot {
+		width: 9px;
+		height: 9px;
+		border-radius: 2px;
+		display: inline-block;
+		flex: 0 0 auto;
 	}
 	.item {
 		display: flex;

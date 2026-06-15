@@ -2,11 +2,11 @@
 // (DESIGN.md §3.2). Lookups resolve either an id or a slug.
 import { NAMED_SCALES } from './named';
 import { generateScales } from './generate';
-import { FAMILY_ORDER, FAMILY_LABEL } from './types';
+import { FAMILY_ORDER, FAMILY_LABEL, FAMILY_COLOR } from './types';
 import type { ScaleRecord, Family } from './types';
 
 export type { ScaleRecord, Family } from './types';
-export { FAMILY_ORDER, FAMILY_LABEL } from './types';
+export { FAMILY_ORDER, FAMILY_LABEL, FAMILY_COLOR } from './types';
 
 const byId = new Map<string, ScaleRecord>();
 const bySlug = new Map<string, ScaleRecord>();
@@ -57,6 +57,17 @@ export function namedByFamily(): FamilyGroup[] {
 
 export function generatedScales(): ScaleRecord[] {
 	return ALL_SCALES.filter((s) => s.family === 'generated').sort((a, b) => a.pcNumber - b.pcNumber);
+}
+
+/**
+ * The complete valid grid for the Explorer (named + un-named), sorted by pitch-class
+ * number. Named shapes carry their family so the UI can tint them; un-named shapes
+ * are 'generated'. Constraint mirrors the generator: 5–8 notes, no step over 4.
+ */
+export function explorerScales(): ScaleRecord[] {
+	return ALL_SCALES.filter(
+		(s) => s.steps.length >= 5 && s.steps.length <= 8 && Math.max(...s.steps) <= 4
+	).sort((a, b) => a.pcNumber - b.pcNumber);
 }
 
 export function search(query: string): ScaleRecord[] {

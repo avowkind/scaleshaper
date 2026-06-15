@@ -52,3 +52,16 @@ export const FAMILY_LABEL: Record<Family, string> = {
 	exotic: 'Exotic',
 	generated: 'Explorer'
 };
+
+// Per-family colours, shared by the sidebar group dots and the Explorer tints.
+// `accent` is the saturated marker; `fill` is the light badge background.
+export const FAMILY_COLOR: Record<Family, { accent: string; fill: string }> = {
+	major: { accent: '#e0a106', fill: '#fbf0d2' },
+	mode: { accent: '#2a9d8f', fill: '#d8f0ec' },
+	minor: { accent: '#4f5bd5', fill: '#e1e3fb' },
+	pentatonic: { accent: '#2e9e6b', fill: '#d8f0e3' },
+	blues: { accent: '#3d6fb0', fill: '#dbe7f5' },
+	symmetric: { accent: '#8e5bc4', fill: '#ece1f7' },
+	exotic: { accent: '#c0392b', fill: '#f7ddda' },
+	generated: { accent: 'transparent', fill: 'transparent' }
+};
