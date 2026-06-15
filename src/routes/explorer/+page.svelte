@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { generatedScales, signatureLabel } from '$lib/catalog';
 	let all = generatedScales();
 	let notes = $state(0); // 0 = all
@@ -22,7 +23,7 @@
 
 <div class="grid">
 	{#each filtered as s}
-		<a class="cell" href="/scale/{s.id}">{signatureLabel(s)}</a>
+		<a class="cell" href="{base}/scale/{s.id}">{signatureLabel(s)}</a>
 	{/each}
 </div>
 

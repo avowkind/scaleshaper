@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { base } from '$app/paths';
 	import { prefs } from '$lib/state.svelte';
 	import {
 		getScale,
@@ -131,7 +132,7 @@
 				<div class="rels">
 					{#each scale.relations as r}
 						{@const rs = relation(r)}
-						{#if rs}<a class="rel" href="/scale/{routeOf(rs)}">{displayName(rs)}</a>{/if}
+						{#if rs}<a class="rel" href="{base}/scale/{routeOf(rs)}">{displayName(rs)}</a>{/if}
 					{/each}
 				</div>
 			{/if}

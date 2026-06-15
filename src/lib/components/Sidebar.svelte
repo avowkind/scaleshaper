@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { base } from '$app/paths';
 	import { namedByFamily, routeOf, search, signatureLabel, type ScaleRecord } from '$lib/catalog';
 
 	let query = $state('');
@@ -7,12 +8,12 @@
 	let results = $derived(query.trim() ? search(query) : []);
 
 	function active(scale: ScaleRecord): boolean {
-		return $page.url.pathname === `/scale/${routeOf(scale)}`;
+		return $page.url.pathname === `${base}/scale/${routeOf(scale)}`;
 	}
 </script>
 
 <nav class="sidebar">
-	<a class="brand" href="/scale/major">MyScales</a>
+	<a class="brand" href="{base}/scale/major">MyScales</a>
 
 	<input class="search" placeholder="search name, mood, tune…" bind:value={query} />
 
@@ -23,7 +24,7 @@
 				<div class="empty">no matches</div>
 			{/if}
 			{#each results as s}
-				<a class="item" class:active={active(s)} href="/scale/{routeOf(s)}">{s.name}</a>
+				<a class="item" class:active={active(s)} href="{base}/scale/{routeOf(s)}">{s.name}</a>
 			{/each}
 		</div>
 	{:else}
@@ -31,7 +32,7 @@
 			<div class="group">
 				<div class="group-label">{g.label}</div>
 				{#each g.scales as s}
-					<a class="item" class:active={active(s)} href="/scale/{routeOf(s)}">
+					<a class="item" class:active={active(s)} href="{base}/scale/{routeOf(s)}">
 						{s.name}<span class="sig">{signatureLabel(s)}</span>
 					</a>
 				{/each}
@@ -39,7 +40,7 @@
 		{/each}
 		<div class="group">
 			<div class="group-label">Explorer</div>
-			<a class="item" class:active={$page.url.pathname === '/explorer'} href="/explorer">
+			<a class="item" class:active={$page.url.pathname === `${base}/explorer`} href="{base}/explorer">
 				All generated scales →
 			</a>
 		</div>

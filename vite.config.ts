@@ -2,6 +2,11 @@ import adapter from '@sveltejs/adapter-static';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
+// Project is published to GitHub Pages under https://<user>.github.io/myscales/,
+// so the production build is served from the /myscales base path. For a custom
+// domain or a <user>.github.io repo, set BASE_PATH='' (root).
+const base = process.env.BASE_PATH ?? (process.env.NODE_ENV === 'production' ? '/myscales' : '');
+
 export default defineConfig({
 	plugins: [
 		sveltekit({
@@ -11,8 +16,12 @@ export default defineConfig({
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
 
-			// Static SPA: dynamic /scale/[id] routes are served via an index.html fallback.
-			adapter: adapter({ fallback: 'index.html' })
+			paths: { base },
+
+			// Static SPA: deep links like /scale/[id] are served via a 404.html
+			// fallback (GitHub Pages serves 404.html for unknown paths; the app
+			// then boots and client-routes).
+			adapter: adapter({ fallback: '404.html' })
 		})
 	]
 });
