@@ -71,8 +71,16 @@ is the **network graph** you asked about, and it's genuinely useful — but with
 - filtering by note-count (all 7-note scales, etc.);
 - using kNN (k≈3) rather than a global threshold.
 
-**C. Keep the grid as the "index" view.** The current signature-sorted grid is a
-fine lookup table; keep it as one of several toggleable layouts.
+**C. Keep the grid as the "index" view.** The signature-sorted grid stays as one of
+several toggleable layouts.
+
+**Cell / node rendering — use the scale glyph.** In every view (grid, ego-network
+nodes, atlas points) a scale is drawn as its **donut glyph** (ticket T2,
+[SCALE-GLYPH.md](SCALE-GLYPH.md)) rather than its interval digits. The digit
+signature — plus the name and EMD distance to the focused scale — appears on
+**hover** (and as the `title`/`aria-label`). Glyphs make the map scannable by shape,
+and in the ego-network "modes are rotations" becomes literal: a scale's modal
+neighbours appear as rotated rings around it. This resolves T2's open question 2.
 
 **D. Structured (theory-driven) alternatives**, if we'd rather not embed:
 - **cardinality rings** — concentric rings for 5/6/7/8-note scales, angle by
@@ -106,6 +114,8 @@ this sound — what's its neighbourhood?") far better than the current numeric s
    same tonic; keeps parallel modes close).
 3. **Primary view:** **ego-network** — pick a scale, show its neighbourhood out to
    1–2 moves. (Atlas/MDS deferred; the grid stays as the index.)
+4. **Rendering:** scales are drawn as **donut glyphs** (T2), not digits; the
+   interval signature, name and EMD distance show on hover.
 
 Still to settle at build time:
 - Neighbour rule for the ego-network: all scales within EMD ≤ *d* (e.g. *d* = 1),

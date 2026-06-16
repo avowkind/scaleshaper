@@ -35,3 +35,8 @@ scripts/sanity.ts    quick theory check — `npx tsx scripts/sanity.ts`
 
 Stack: SvelteKit (static adapter, client-only SPA) · VexFlow (notation) ·
 smplr (sampled piano) + Web MIDI.
+
+## Backlog
+
+Proposed-but-unbuilt features live in [tickets/](tickets/) — currently the EMD
+similarity map (T1) and the circular scale glyph (T2).

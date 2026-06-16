@@ -70,6 +70,7 @@ distance 1.
    primary channel, colour as redundant backup. Remaining sub-question: should
    thickness map larger-interval → thicker (leaps bulge) or the inverse
    (semitones bold)? Illustration uses leaps-bulge.
-2. In the Explorer, replace the numeric signature with the glyph, or show both?
+2. ~~Explorer: glyph vs numeric signature?~~ **Resolved (T1):** the glyph replaces
+   the digits as the cell/node content; the digit signature shows on hover.
 3. Comparison mode: always against a fixed reference (parent / Major), or free
    pick-two?
