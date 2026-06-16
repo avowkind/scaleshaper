@@ -53,8 +53,11 @@ distance 1.
 
 ## Design notes
 
+- **Donut form** (chosen): thick arc segments forming a ring, with a small gap at
+  each note position and a root dot just outside the top. The thickness is generous
+  (band ≈ half the radius) so it reads as a donut, not a thin circle.
 - Geometry: pitch class *p* → angle −90° + *p*/12·360°, clockwise; arc between
-  consecutive notes coloured by gap; root dot emphasised.
+  consecutive notes coloured by gap and widened by gap; root marked at top.
 - Two sizes: **micro** (dots + coloured arcs, ~28 px) and **detail** (degree ticks,
   hover, ~120 px).
 - Pure SVG, data-driven from `steps` — no new data, just a `<ScaleGlyph steps=…>`
