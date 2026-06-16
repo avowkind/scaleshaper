@@ -10,9 +10,16 @@ the Earth-Mover metric (T1) lives on.
 
 Draw the 12 pitch classes as a clock face with the **root at 12 o'clock**. Mark the
 scale's notes, and render the **gap between each pair of consecutive notes as an arc
-coloured by its semitone size** — reusing the gap palette (1 = red, 2 = blue,
-3 = amber, 4 = green). The result is the interval line wrapped into a circle: a
-coloured ring that reads as a distinct silhouette even at 24–32 px.
+whose semitone size is shown two ways at once**: by **line thickness** (thin =
+semitone, fat = leap) and, redundantly, by **colour** (the gap palette: 1 = red,
+2 = blue, 3 = amber, 4 = green). The result is the interval line wrapped into a
+circle: a ring that reads as a distinct silhouette even at 24–32 px.
+
+**Thickness is the primary channel, colour is the backup.** Encoding the interval as
+stroke width means the glyph survives greyscale printing, colour-blindness, and very
+small sizes — the half-steps appear as narrow "necks" in the ring and the big leaps
+bulge, so the shape alone carries the interval pattern. Colour then reinforces it for
+free. (See the in-chat illustration comparing colour-only, thickness-only, and both.)
 
 ## Why it works
 
@@ -56,8 +63,10 @@ distance 1.
 
 ## Open questions
 
-1. Micro glyph: colour the arcs by gap (more info, needs a few px of stroke) or just
-   filled/empty note dots (simplest)?
+1. ~~Micro glyph: colour vs note dots?~~ **Resolved:** thickness ∝ interval as the
+   primary channel, colour as redundant backup. Remaining sub-question: should
+   thickness map larger-interval → thicker (leaps bulge) or the inverse
+   (semitones bold)? Illustration uses leaps-bulge.
 2. In the Explorer, replace the numeric signature with the glyph, or show both?
 3. Comparison mode: always against a fixed reference (parent / Major), or free
    pick-two?
