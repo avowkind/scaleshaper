@@ -5,7 +5,8 @@ export type Family =
 	| 'pentatonic'
 	| 'blues'
 	| 'symmetric'
-	| 'exotic'
+	| 'world'
+	| 'jazz'
 	| 'generated';
 
 export interface ParentRelation {
@@ -38,7 +39,8 @@ export const FAMILY_ORDER: Family[] = [
 	'pentatonic',
 	'blues',
 	'symmetric',
-	'exotic',
+	'world',
+	'jazz',
 	'generated'
 ];
 
@@ -49,7 +51,8 @@ export const FAMILY_LABEL: Record<Family, string> = {
 	pentatonic: 'Pentatonic',
 	blues: 'Blues',
 	symmetric: 'Symmetric',
-	exotic: 'Exotic',
+	world: 'World & traditional',
+	jazz: 'Jazz & modern',
 	generated: 'Explorer'
 };
 
@@ -62,6 +65,7 @@ export const FAMILY_COLOR: Record<Family, { accent: string; fill: string }> = {
 	pentatonic: { accent: '#2e9e6b', fill: '#d8f0e3' },
 	blues: { accent: '#3d6fb0', fill: '#dbe7f5' },
 	symmetric: { accent: '#8e5bc4', fill: '#ece1f7' },
-	exotic: { accent: '#c0392b', fill: '#f7ddda' },
+	world: { accent: '#c0392b', fill: '#f7ddda' },
+	jazz: { accent: '#b5398a', fill: '#f6daed' },
 	generated: { accent: 'transparent', fill: 'transparent' }
 };

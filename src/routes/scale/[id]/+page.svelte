@@ -154,7 +154,7 @@
 		</section>
 	</div>
 
-	<div class="row">
+	<div class="row no-print">
 		<section class="card rhythm-card">
 			<h2 class="section-label">Rhythm · the scale as a looping click cycle</h2>
 			{#key scale.id}
@@ -163,7 +163,7 @@
 		</section>
 	</div>
 
-	<section class="card neigh-card">
+	<section class="card neigh-card no-print">
 		<h2 class="section-label">Neighbourhood · nearest scales by ear (Earth-Mover distance)</h2>
 		{#key scale.id}
 			<EgoNetwork {scale} />
@@ -343,5 +343,41 @@
 		font-size: 0.88rem;
 		color: var(--ink-soft);
 		margin: 0;
+	}
+
+	/* Compact the kept sections so the sheet fits one A4 landscape page
+	   (Rhythm + Neighbourhood are hidden via .no-print). */
+	@media print {
+		.head {
+			padding-bottom: 0.2rem;
+			margin-bottom: 0.35rem;
+		}
+		h1 {
+			font-size: 1.4rem;
+		}
+		.hero {
+			margin-bottom: 0.35rem;
+		}
+		.row {
+			gap: 0.6rem;
+			margin-bottom: 0.35rem;
+		}
+		.card {
+			padding: 0.35rem 0.55rem;
+			break-inside: avoid;
+		}
+		.section-label {
+			margin-bottom: 0.25rem;
+		}
+		/* cap the tall visuals so the whole sheet stays on one page */
+		.hero :global(svg.interval-line) {
+			max-height: 118px;
+		}
+		:global(svg.keyboard) {
+			max-height: 148px;
+		}
+		.stave-card :global(svg) {
+			max-height: 172px;
+		}
 	}
 </style>
